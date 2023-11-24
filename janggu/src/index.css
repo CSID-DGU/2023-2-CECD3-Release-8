@@ -1,0 +1,331 @@
+@import url("httpsmenu://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+  user-select: none;
+}
+
+html,
+body {
+  font-family: "Pretendard";
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background: #f8f8f8;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* font-- start */
+.H1 {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 30px;
+}
+.H2 {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 21px;
+  line-height: 25.5px;
+}
+.H3 {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 22.5px;
+}
+.Sub1 {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 18px;
+}
+.Sub2 {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 13.5px;
+  line-height: 16.5px;
+}
+.Sub3 {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: center;
+}
+.Body1 {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+}
+.Body2 {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 18px;
+}
+.Body3 {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13.5px;
+  line-height: 16.5px;
+}
+.Body4 {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+}
+.Body5 {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10.05px;
+  line-height: 13.5px;
+}
+
+.Tag1 {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 9px;
+  line-height: 10.5px;
+  text-align: center;
+}
+.Tag1M {
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+}
+.Tag2M {
+  font-family: Pretendard;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 14px;
+}
+/* font-- end */
+
+.main-orange-button {
+  background-color: #ff7a00;
+  color: #ffffff;
+  padding: 9px 12px;
+  border-radius: 8px;
+  border: 0.75px solid #ff7a00;
+}
+.main-orange-buttonM {
+  background-color: #ff7a00;
+  color: #ffffff;
+  padding: 9px 12px;
+  border-radius: 8px;
+  border: 0.75px solid #ff7a00;
+}
+.main-orange-button:hover {
+  background-color: rgba(255, 122, 0, 0.8);
+  border: 0.75px solid rgba(255, 122, 0, 0.8);
+}
+.main-orange-button:disabled {
+  background: #ececec;
+  border: 0.75px solid #ececec;
+}
+.main-orange-buttonM:disabled {
+  background: #ececec;
+  border: 0.75px solid #ececec;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.main-black-button {
+  background-color: #1e1e1e;
+  color: #ffffff;
+  padding: 9px 12px;
+  border-radius: 8px;
+  border: 0.75px solid #1e1e1e;
+}
+.main-black-buttonM {
+  background-color: #1e1e1e;
+  color: #ffffff;
+  padding: 9px 12px;
+  border-radius: 8px;
+  border: 0.75px solid #1e1e1e;
+}
+.main-black-button:hover {
+  background: #4c4c4c;
+  border: 0.75px solid #4c4c4c;
+}
+.main-black-button:disabled {
+  background-color: #ececec;
+  color: #ffffff;
+  cursor: default;
+  border: 0.75px solid #ececec;
+}
+.main-black-buttonM:disabled {
+  background-color: #ececec;
+  color: #ffffff;
+  cursor: default;
+  border: 0.75px solid #ececec;
+}
+.main-black-button-disabled {
+  background-color: #ececec;
+  color: #ffffff;
+  cursor: default;
+}
+
+.outlined-black-button {
+  padding: 9px 12px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #1e1e1e;
+  border: 0.75px solid #1e1e1e;
+}
+.outlined-black-buttonM {
+  padding: 9px 12px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #1e1e1e;
+  border: 0.75px solid #1e1e1e;
+}
+.outlined-black-button:hover {
+  background: #ececec;
+}
+.outlined-black-button:disabled {
+  background-color: #ececec;
+  color: #ffffff;
+  border: 0.75px solid #ececec;
+  cursor: default;
+}
+.outlined-black-buttonM:disabled {
+  background-color: #ececec;
+  color: #ffffff;
+  border: 0.75px solid #ececec;
+  cursor: default;
+}
+
+.outlined-black-button-selected {
+  padding: 9px 12px;
+  border-radius: 8px;
+  background-color: #000000;
+  color: #ffffff;
+  border: 0.75px solid #000000;
+}
+
+.outlined-orange-button {
+  padding: 9px 12px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #ff7a00;
+  border: 0.75px solid #ff7a00;
+}
+.outlined-orange-buttonM {
+  padding: 9px 12px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #ff7a00;
+  border: 0.75px solid #ff7a00;
+}
+.outlined-orange-button:hover {
+  background: rgba(255, 122, 0, 0.3);
+}
+.outlined-orange-button:disabled {
+  background-color: #ececec;
+  color: #ffffff;
+  border: 0.75px solid #ececec;
+  cursor: default;
+}
+.outlined-orange-buttonM:disabled {
+  background-color: #ececec;
+  color: #ffffff;
+  border: 0.75px solid #ececec;
+  cursor: default;
+}
+.outlined-orange-button-selected {
+  padding: 9px 12px;
+  border-radius: 8px;
+  background-color: #ff7a00;
+  color: #ffffff;
+  /* border: 0.75px solid #ff7a00; */
+}
+
+.div-main-section {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+.div-main-jangdan-section {
+  background: #fff;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 300px;
+  padding: 20px;
+  /* padding: 24px 36px 21px; */
+  flex-shrink: 0;
+  gap: 10px;
+}
+
+.div-check-section {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.div-header {
+  align-items: center;
+  background-color: #fff;
+  border-bottom: 2px solid #ececec;
+  display: flex;
+  height: 61.5px;
+  justify-content: space-between;
+  z-index: 1000;
+}
+.div-check-button-section {
+  width: 100%;
+  display: flex;
+  gap: 20px;
+  flex-shrink: 0;
+}
+.div-check-button-section button {
+  width: 100%;
+}
+
+.div-check-jangdan-section {
+  width: 100%;
+  height: 168px;
+  display: flex;
+  align-items: flex-start;
+  flex-shrink: 1;
+  border-radius: 10px;
+  font-weight: bold;
+  background-color: white;
+  padding: 20px;
+  /* padding: 24px 36px 21px; */
+  gap: 10px;
+}
