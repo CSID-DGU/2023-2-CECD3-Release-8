@@ -98,25 +98,26 @@ def checkSound(jangdan):
 
         if 'le' in data[0].keys() : le.append(data[0]['le']['y'])
         else :
-            if i==0 : le.append(435)
+            if i==0 : le.append(300)
             else : le.append(le[-1])
 
         if 'lw' in data[0].keys() : lw.append(data[0]['lw']['y'])
         else :
-            if i==0 : lw.append(515)
+            if i==0 : lw.append(300)
             else : lw.append(lw[-1])
 
         if 're' in data[0].keys() : re.append(data[0]['re']['y'])
         else :
-            if i==0: re.append(470)
+            if i==0: re.append(300)
             else : re.append(re[-1])
 
         if 'rw' in data[0].keys() : rw.append(data[0]['rw']['y'])
         else :
-            if i==0 : rw.append(515)
+            if i==0 : rw.append(300)
             else : rw.append(rw[-1])
 
     com_time = p_time[-1] - end_time
+    # print(com_time, p_time[-1], end_time)
 
     while True:
         if p_time[0] <= com_time:
@@ -176,7 +177,7 @@ def checkSound(jangdan):
         "sound" : sound,
         "sound_acc": acc,
         "motion": response,
-        "motion_acc": response.count(1)/len(response)*100
+        "motion_acc": round(response.count(1)/len(response)*100, 2)
     }
     print(ret)
 

@@ -383,7 +383,20 @@ button:hover {
   transform: translateX(-50%);
   opacity: 50%;
 }
+.div-countdown {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 50%;
 
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 150px;
+  line-height: 30px;
+  color: #ff7a00;
+}
 .droplet_spinner {
   display: flex;
   justify-content: center;

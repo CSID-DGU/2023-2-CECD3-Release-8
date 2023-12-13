@@ -30,16 +30,24 @@ function getSound(num) {
   if (num === 2) return "쿵";
 }
 
+function getMotion(num) {
+  if (num === 0) return "❌";
+  if (num === 1) return "⭕";
+}
+
 function Main() {
   const [selected, setSelected] = useState(0);
   // const [result, setResult] = useState(null);
   const [result, setResult] = useState({
     peaks: [40, 77, 95, 111, 126, 146, 163, 181, 197, 231, 291],
     sound: [1, 0, 2, 0, 0, 2, 2, 0, 2, 2],
-    acc: 100,
+    sound_acc: 100,
+    motion: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    motion_acc: 100,
   });
   const [isLoading, setIsLoading] = useState(false);
   const [sound, setSound] = useState([]);
+  const [motion, setMotion] = useState([]);
 
   useEffect(() => {
     setResult(null);
@@ -55,11 +63,24 @@ function Main() {
       jangdanList[selected][2].forEach((s) => {
         if (s === " ") arr.push(" ");
         else {
-          arr.push(getSound(result.sound[i]));
+          arr.push(getSound(result.sound[i]) === s ? "⭕" : "❌");
           i++;
         }
       });
     setSound(arr);
+
+    setMotion([]);
+    let i2 = 0;
+    let arr2 = [];
+    result &&
+      jangdanList[selected][2].forEach((s) => {
+        if (s === " ") arr2.push(" ");
+        else {
+          arr2.push(getMotion(result.motion[i2]));
+          i2++;
+        }
+      });
+    setMotion(arr2);
   }, [result]);
 
   return (
@@ -96,11 +117,23 @@ function Main() {
             <Loading />
           ) : (
             result && (
-              <>
+              <div
+                style={{ display: "flex", flexDirection: "column", gap: "8px" }}
+              >
                 <div className="div-main-sound-list">
                   {jangdanList[selected][2].map((s, idx) => (
                     <t className="Body2">{s}</t>
                   ))}
+                </div>
+                <div
+                  className="Body2"
+                  style={{
+                    width: "100%",
+                    textAlign: "left",
+                    marginTop: "20px",
+                  }}
+                >
+                  소리 정확도: <t className="H4">{result.sound_acc}%</t>
                 </div>
                 <div className="div-main-sound-list">
                   {sound.length > 0 &&
@@ -108,10 +141,10 @@ function Main() {
                       <t
                         className="Body2"
                         style={{
-                          color:
-                            s === jangdanList[selected][2][idx]
-                              ? "#ff7a00"
-                              : "rgb(150, 150, 150)",
+                          color: true
+                            ? // s === jangdanList[selected][2][idx]
+                              "#ff7a00"
+                            : "rgb(150, 150, 150)",
                         }}
                       >
                         {s}
@@ -128,12 +161,28 @@ function Main() {
                   style={{
                     width: "100%",
                     textAlign: "left",
-                    marginTop: "10px",
+                    marginTop: "20px",
                   }}
                 >
-                  정확도: <t className="H4">{result.acc}%</t>
+                  자세 정확도: <t className="H4">{result.motion_acc}%</t>
                 </div>
-              </>
+                <div className="div-main-sound-list">
+                  {motion.length > 0 &&
+                    motion.map((s, idx) => (
+                      <t
+                        className="Body2"
+                        style={{
+                          color: true
+                            ? // s === jangdanList[selected][2][idx]
+                              "#ff7a00"
+                            : "rgb(150, 150, 150)",
+                        }}
+                      >
+                        {s}
+                      </t>
+                    ))}
+                </div>
+              </div>
             )
           )}
         </div>
