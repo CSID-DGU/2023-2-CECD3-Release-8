@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import AudioReactRecorder, { RecordState } from "audio-react-recorder";
 import "audio-react-recorder/dist/index.css";
 import PoseNet from "react-posenet";
@@ -139,13 +138,12 @@ export default function Check({ jangdan, setResult, setIsLoading }) {
             style={{ height: "100%" }}
             inferenceConfig={{ decodingMethod: "single-person" }}
             onEstimate={(poses) => savePosesData(poses)}
-            // frameRate={10}
           />
           {isCountdown ? (
             <div className="div-countdown">{countdown}</div>
           ) : (
             recordState !== RecordState.START && (
-              <img src={장구맨} alt="" className="img-guide" />
+              <img src={장구맨} alt="" className="img-jangguman" />
             )
           )}
         </div>
@@ -178,14 +176,6 @@ export default function Check({ jangdan, setResult, setIsLoading }) {
             gap: "10px",
           }}
         >
-          {/* {audioData && (
-            <audio
-              style={{ width: "300px", height: "40px" }}
-              id="audio"
-              controls
-              src={audioData ? audioData.url : null}
-            ></audio>
-          )} */}
           <AudioReactRecorder
             state={recordState}
             onStop={onStop}

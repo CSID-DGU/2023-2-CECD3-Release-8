@@ -172,6 +172,11 @@ def checkSound(jangdan):
             else : response.append(0)
         i = i-10
 
+    diff =  len(sound) - len(response)
+    if (diff > 0):
+        for i in range(diff):
+            response.append(-1)
+
     ret = {
         "peaks": peaks.tolist(),
         "sound" : sound,
