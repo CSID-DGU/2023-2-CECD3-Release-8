@@ -15,22 +15,34 @@ export default function Check({ jangdan, setResult, setIsLoading }) {
   const [recordState, setRecordState] = useState(null);
   const [audioData, setAudioData] = useState(null);
   const [posesString, setPosesString] = useState([]);
+  const [countdown, setCountdown] = useState(5);
+  const [isCountdown, setIsCountdown] = useState(false);
   const [startTime, setStartTime] = useState();
 
   const start = () => {
-    setPosesString([]);
     setRecordState(RecordState.START);
     setStartTime(window.performance.now());
+    setPosesString([]);
+    setIsCountdown(true);
+    const countdownInterval = setInterval(() => {
+      setCountdown((prevCountdown) => prevCountdown - 1);
+    }, 1000);
+
+    setTimeout(() => {
+      clearInterval(countdownInterval);
+      setIsCountdown(false);
+    }, 5000);
   };
 
   const stop = () => {
     setRecordState(RecordState.STOP);
+    console.log(posesString);
   };
 
   const checkJanggu = () => {
     setIsLoading(true);
     const post = {
-      pose: JSON.stringify(posesString),
+      posesString: JSON.stringify(posesString),
       jangdan: jangdan[0],
     };
     fetch("http://localhost:3030/checkJanggu", {
@@ -44,13 +56,15 @@ export default function Check({ jangdan, setResult, setIsLoading }) {
           setResult(json.result);
           setIsLoading(false);
         } else {
-          window.alert("Error");
+          window.alert("다시 녹음해주세요.");
           setIsLoading(false);
         }
       });
   };
 
   const onStop = (data) => {
+    setCountdown(5);
+
     setAudioData(data);
     console.log("onStop: audio data", data);
 
@@ -69,7 +83,6 @@ export default function Check({ jangdan, setResult, setIsLoading }) {
     }, 100);
 
     checkJanggu();
-    console.log(posesString);
   };
 
   const savePosesData = (poses) => {
@@ -88,6 +101,7 @@ export default function Check({ jangdan, setResult, setIsLoading }) {
 
     const new_pose = [
       {
+        time: window.performance.now() - startTime,
         re: re,
         rw: rw,
         le: le,
@@ -121,13 +135,19 @@ export default function Check({ jangdan, setResult, setIsLoading }) {
             position: "relative",
           }}
         >
-          {/* <PoseNet
+          <PoseNet
             style={{ height: "100%" }}
             inferenceConfig={{ decodingMethod: "single-person" }}
             onEstimate={(poses) => savePosesData(poses)}
-            frameRate={10}
-          /> */}
-          <img src={장구맨} alt="" className="img-guide" />
+            // frameRate={10}
+          />
+          {isCountdown ? (
+            <div className="div-countdown">{countdown}</div>
+          ) : (
+            recordState !== RecordState.START && (
+              <img src={장구맨} alt="" className="img-guide" />
+            )
+          )}
         </div>
       </div>
       <div

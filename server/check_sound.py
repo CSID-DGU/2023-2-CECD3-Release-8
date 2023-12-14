@@ -37,7 +37,8 @@ def checkSound(jangdan):
     onset_env = librosa.onset.onset_strength(y=y, sr=sr,
                                             hop_length=512,
                                             aggregate=np.median)
-    peaks = librosa.util.peak_pick(onset_env, pre_max=1, post_max=3, pre_avg=5, post_avg=5, delta=5, wait=1)
+    peaks = librosa.util.peak_pick(onset_env, pre_max=10, post_max=10, pre_avg=10, post_avg=10, delta=10, wait=5)
+    peaks = [peak for peak in peaks if peak*0.02205 > 4]
     times = librosa.times_like(onset_env, sr=sr, hop_length=512)
     tmp2 = np.array([len(times)-1])
     peaks = np.append(peaks, tmp2)
